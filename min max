@@ -1,0 +1,55 @@
+
+import java.util.Arrays;
+import java.util.Scanner;
+public class Datamining_prac5 {
+    public static void main(String[] args) {
+        System.out.println("Min Max Normalization");
+        System.out.println("Enter number of elements");
+        Scanner sc = new Scanner(System.in);
+        int size = sc.nextInt();
+        System.out.println("Enter elements");
+        int arr[] = new int[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = sc.nextInt();
+        }
+        System.out.println("Enter new max");
+        int newMax = sc.nextInt();
+        System.out.println("Enter new min");
+        int newMin = sc.nextInt();
+        float newarr[] = new float[size];
+        int oriarr[] = new int[size];
+        oriarr = arr.clone();
+        Arrays.sort(arr);
+        int min = arr[0];
+        int max = arr[size - 1];
+        float minmax;
+        for (int i = 0; i < size; i++) {
+            newarr[i] = ((((float) (oriarr[i] - min) / (float) (max - min)) * (float) (newMax - newMin)) + newMin);
+        }
+        System.out.println("After Min Max Normalization");
+        for (int i = 0; i < size; i++) {
+            System.out.println(newarr[i]);
+        }
+    }
+}
+
+OUTPUT: 
+PS G:\sem6 practical> cd "g:\sem6 practical\" ; if ($?) { javac Datamining_prac5.java } ; if ($?) { java Datamining_prac5 }
+
+Min Max Normalization
+Enter number of elements
+4
+Enter elements
+8
+10
+15
+20
+Enter new max
+22
+Enter new min
+6
+After Min Max Normalization
+6.0
+8.666667
+15.333333
+22.0
