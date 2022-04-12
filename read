@@ -1,0 +1,8 @@
+Scanner inFile1 = new Scanner(new File("KeyWestTemp.txt"));
+
+StringBuilder sb = new StringBuilder();
+while(inFile1.hasNext()) {
+    sb.append(inFile1.nextLine());
+}
+
+String[] yourArray = sb.toString().split(", ");
