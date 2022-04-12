@@ -1,0 +1,93 @@
+
+import java.util.Arrays; 
+import java.util.Scanner; 
+public class Datamining_prac6 { 
+    public static Double mean(int[] arr) { 
+        Double sum = 0.0; 
+        Double ma; 
+        for (int i = 0; i < arr.length; i++) { 
+            sum = sum + arr[i]; 
+        } 
+        ma = sum / arr.length; 
+        return ma; 
+    }  
+    public static Double standard(int[] arr) { 
+        Double std = 0.0, sum = 0.0; 
+        Double me = mean(arr); 
+        Double dev[] = new Double[arr.length]; 
+        for (int i = 0; i < arr.length; i++) { 
+            dev[i] = arr[i] - me; 
+            dev[i] *= dev[i]; 
+            sum += dev[i]; 
+        } 
+        std = sum / arr.length; 
+        std = Math.pow(std, 0.5); 
+        return std; 
+    } 
+  
+    public static void main(String[] args) { 
+        System.out.println("Z Normalization"); 
+        System.out.println("Enter number of elements"); 
+        Scanner sc = new Scanner(System.in); 
+        int size = sc.nextInt(); 
+        System.out.println("Enter elements"); 
+        int arr[] = new int[size]; 
+        for (int i = 0; i < size; i++) { 
+            arr[i] = sc.nextInt(); 
+        } 
+        double newarr[] = new double[size]; 
+        float zscore; 
+         for (int i = 0; i < size; i++) { 
+            newarr[i] = (((float) arr[i] - mean(arr)) / standard(arr)); 
+        } 
+        System.out.println("After Z Normalization"); 
+        for (int i = 0; i < size; i++) { 
+            System.out.println(newarr[i]); 
+        } 
+      } 
+} 
+ 
+OUTPUT: 
+PS G:\sem6 practical> cd "g:\sem6 practical\" ; if ($?) { javac Datamining_prac5.java } ; if ($?) { java Datamining_prac5 } 
+
+Min Max Normalization 
+Enter number of elements 
+7 
+Enter elements 
+23 
+45 
+57 
+78 
+89 
+12 
+54 
+After Min Max Normalization 
+0.14285715 
+0.42857143 
+0.58441556 
+0.85714287 
+1.0 
+0.0 
+0.54545456 
+Z Normalization 
+Enter number of elements 
+7 
+Enter elements 
+23 
+45 
+57 
+78 
+89 
+12 
+54 
+
+After Z Normalization
+ 
+-1.1027808464909588 
+-0.2407085096401586 
+0.2295127650057324 
+1.0523999956360417 
+1.4834361640614417 
+-1.5338170149163588 
+0.11195744634425965 
+ 
